@@ -13,6 +13,7 @@ def log_action(actor, verb, action_object="", target="", tags=None):
         return None
     if not tags:
         tags = {}
+    tags["verb"] = verb
     action = [
         {
             "measurement": ACTION_MEASUREMENT_NAME,
@@ -20,7 +21,6 @@ def log_action(actor, verb, action_object="", target="", tags=None):
             "time": datetime.now(),
             "fields": {
                 "actor": actor,
-                "verb": verb,
                 "action_object": action_object,
                 "target": target,
             },
