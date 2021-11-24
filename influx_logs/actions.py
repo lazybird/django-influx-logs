@@ -8,7 +8,7 @@ from influx_logs.settings import ACTION_MEASUREMENT_NAME
 client = get_client()
 
 
-def log_action(actor, verb, action_object="", target="", tags=None):
+def log_action(actor, verb, action_object="", target="", description="", extra_data="", tags=None):
     if not client:
         return None
     if not tags:
@@ -23,6 +23,8 @@ def log_action(actor, verb, action_object="", target="", tags=None):
                 "actor": actor,
                 "action_object": action_object,
                 "target": target,
+                "description": description,
+                "extra_data": extra_data,
             },
         }
     ]
