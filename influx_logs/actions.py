@@ -1,14 +1,14 @@
 from datetime import datetime
 
-from django.conf import settings
-
 from influx_logs.connexion import get_client
 from influx_logs.settings import ACTION_MEASUREMENT_NAME
 
 client = get_client()
 
 
-def log_action(actor, verb, action_object="", target="", description="", extra_data="", tags=None):
+def log_action(
+        actor, verb, action_object="", target="", description="",
+        extra_data="", tags=None):
     if not client:
         return None
     if not tags:
